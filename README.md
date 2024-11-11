@@ -1,4 +1,4 @@
-# best-selling-books
+# top-books
 ## AZ's Top Books and Audiobooks Dataset
 
 This project uses Python and Selenium to scrape the top 480 ebooks and audiobooks from my local library's digital collection, gathering information like titles, authors, availability, etc.

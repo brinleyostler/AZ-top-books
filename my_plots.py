@@ -4,14 +4,6 @@ from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def alphabet_rating_df(books, letter='A'):
-    # Return the highest rated books that start with the letter
-    books_letter = books[books['Title'].str.startswith(letter)]
-    books_letter = books_letter.sort_values(by='Rating', ascending=False)
-    df = books_letter.head(5)
-
-    return df
-
 def alphabet_ebooks(books, letter='A'):
     # Return the highest rated ebooks that start with the letter
     ebooks_letter = books[books['Title'].str.startswith(letter)]
@@ -29,3 +21,9 @@ def alphabet_audiobooks(books, letter='A'):
     df_a = audiobooks_letter.head(5)
 
     return df_a
+
+def rank_comparison(books, rank=1):
+    # Return the ratings of the book at the rank
+    book_rank = books[books['Rank'] == 1]
+
+    return book_rank

@@ -26,11 +26,9 @@ books, ebooks, audiobooks = load_books_data()
 
 # Set up the page
 st.title('Arizona\'s Top Books')
-#with st.sidebar:
-#    input_letter = st.text_input('Enter a letter:', 'A')
 
 # Set up tabs
-tab1, tab2 = st.tabs(['Alphabet', 'Format'])
+tab1, tab2 = st.tabs(['Alphabet', 'Rank'])
 
 with tab1:
     input_letter = st.text_input('Enter a letter:', 'A')
@@ -43,3 +41,13 @@ with tab1:
     st.write(f'Top 5 Audiobooks that start with the letter {input_letter}')
     st.dataframe(a_letter)
 
+with tab2:
+    input_rank = st.slider('Enter a rank:', 1, 240, 1)
+
+    ebook_rank = rank_comparison(ebooks, input_rank)
+    audiobook_rank = rank_comparison(audiobooks, input_rank)
+    st.write(f'Book info at rank {input_rank}')
+    st.write('Ebook:')
+    st.dataframe(ebook_rank)
+    st.write('Audiobook:')
+    st.dataframe(audiobook_rank)

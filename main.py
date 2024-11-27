@@ -68,7 +68,7 @@ with tab4:
     st.plotly_chart(fig4)
 
 with tab5:
-    input_rating = st.slider('Enter a rating:', 1.0, 5.0, 1.0)
+    input_rating = st.slider('Enter a rating:', 2.4, 4.7, 4.0)
     
     books_rating = books[books['Rating'] == input_rating]
     fig5 = px.histogram(books_rating, x='Rank', nbins=12, title='Ranks of Books with a ' + str(input_rating) + ' Rating')

@@ -28,7 +28,7 @@ books, ebooks, audiobooks = load_books_data()
 st.title('Arizona\'s Top Books')
 
 # Set up tabs
-tab1, tab2, tab3, tab4 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies', 'Format'])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies', 'Format', 'Rank/Rating'])
 
 with tab1:
     input_letter = st.text_input('Enter a letter:', 'A')
@@ -56,7 +56,7 @@ with tab3:
     input_wait = st.slider('Enter a wait time:', 0, 27, 0)
     books_wait = books[books['Wait Weeks'] == input_wait]
 
-    fig3 = px.histogram(books_wait, x='Copies', nbins=80, title='Number of Copies Available When Wait Time is ' + str(input_wait))
+    fig3 = px.histogram(books_wait, x='Copies', nbins=80, title='Number of Copies Available When Wait Time is ' + str(input_wait) + ' weeks')
     st.plotly_chart(fig3)
 
 with tab4:
@@ -66,3 +66,11 @@ with tab4:
 
     fig4 = px.histogram(format_books, x='Rating', title='Ratings of ' + format_choice + 's')
     st.plotly_chart(fig4)
+
+with tab5:
+    input_rating = st.slider('Enter a rating:', 1.0, 5.0, 1.0)
+    
+    books_rating = books[books['Rating'] == input_rating]
+    fig5 = px.histogram(books_rating, x='Rank', nbins=12, title='Ranks of Books with a ' + str(input_rating) + ' Rating')
+    st.plotly_chart(fig5)
+    

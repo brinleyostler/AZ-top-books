@@ -8,8 +8,8 @@ def alphabet_ebooks(books, letter='A', order=False):
     # Return the highest rated ebooks that start with the letter
     ebooks_letter = books[books['Title'].str.startswith(letter)]
     ebooks_letter = ebooks_letter[ebooks_letter['Format'] == 'EBOOK']
-    ebooks_letter = ebooks_letter.sort_values(by=['Format', 'Rating'], ascending=order)
     df_e = ebooks_letter.head(5)
+    df_e = df_e.sort_values(by='Rating', ascending=order)
 
     return df_e
 
@@ -17,8 +17,8 @@ def alphabet_audiobooks(books, letter='A', order=False):
     # Return the highest rated audiobooks that start with the letter
     audiobooks_letter = books[books['Title'].str.startswith(letter)]
     audiobooks_letter = audiobooks_letter[audiobooks_letter['Format'] == 'AUDIOBOOK']
-    audiobooks_letter = audiobooks_letter.sort_values(by=['Format', 'Rating'], ascending=order)
     df_a = audiobooks_letter.head(5)
+    df_a = df_a.sort_values(by='Rating', ascending=order)
 
     return df_a
 

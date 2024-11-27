@@ -25,7 +25,7 @@ books, ebooks, audiobooks = load_books_data()
 # Set up the page
 st.title('Arizona\'s Top Books')
 st.sidebar.title('Arizona\'s Top Books')
-st.sidebar.write('Input the order we should sort the data:')
+st.sidebar.write('Input the sort order for the ouput data:')
 with st.sidebar:
     input_order = st.toggle('Ascending', True)
 

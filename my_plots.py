@@ -41,8 +41,8 @@ def rank_rating_comparison(books, rating=4.0):
 
     return book_rank_rating
 
-def about(books, sortby='Rank'):
+def about(books, sortby='Rank', order=True):
     # Return the books sorted by a specific column
-    books = books.sort_values(by=[sortby], ascending=True)
+    books = books.sort_values(by=[sortby], ascending=order)
 
     return books

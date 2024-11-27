@@ -24,13 +24,13 @@ def load_books_data():
     return df, df_e, df_a
 books, ebooks, audiobooks = load_books_data()
 
+# Set up the page
 st.title('Arizona\'s Top Books')
+with st.sidebar:
+    input_letter = st.text_input('Enter a letter:', 'A')
 
 # Set up tabs
 tab1 = st.tabs(['Alphabet'])
-
-# Alphabet tab
-input_letter = st.text_input('Enter a letter:', 'A')
 
 with tab1:
     e_letter = alphabet_ebooks(books, input_letter)

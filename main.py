@@ -37,11 +37,11 @@ with tab1:
     input_letter = st.text_input('Enter a letter:', 'A')
 
     e_letter = alphabet_ebooks(books, input_letter, input_order)
-    st.write(f'Top 5 Ebooks that start with the letter {input_letter}')
+    st.write(f'Top 5 ebooks that start with the letter {input_letter} (sorted by rating)')
     st.dataframe(e_letter)
 
     a_letter = alphabet_audiobooks(books, input_letter, input_order)
-    st.write(f'Top 5 Audiobooks that start with the letter {input_letter}')
+    st.write(f'Top 5 audiobooks that start with the letter {input_letter} (sorted by rating)')
     st.dataframe(a_letter)
 
 with tab2:
@@ -94,10 +94,15 @@ with tab5:
 
     fig5 = px.histogram(books_rating, x='Rank', nbins=12, title='Ranks of Books with a ' + str(input_rating) + ' Rating')
     st.plotly_chart(fig5)
-    st.write('Books with a rating of ' + str(input_rating))
+    st.write('All books with a rating of ' + str(input_rating))
     st.table(books_rating)
     
 with tab6:
     input_sort = st.selectbox('Sort by:', ['Rank', 'Title', 'Author', 'Rating', 'Format', 'Copies', 'Availability', 'Wait Weeks'])
     books_sorted = about(books, input_sort, input_order)
+    
+    st.write('''
+             Here is the entire AZ-top-books dataset, sorted by the column you selected.\n
+             Play around with the dropdown menu to see how the data changes!
+             ''')
     st.dataframe(books_sorted)

@@ -75,6 +75,6 @@ with tab5:
     st.table(books_rating)
     
 with tab6:
-    input_sort = st.selectbox('Sort by:', ['Title', 'Author', 'Rating', 'Rank', 'Format', 'Copies', 'Wait Weeks'])
+    input_sort = st.selectbox('Sort by:', ['Rank', 'Title', 'Author', 'Rating', 'Format', 'Copies', 'Availability', 'Wait Weeks'])
     books_sorted = about(books, input_sort)
     st.table(books_sorted)

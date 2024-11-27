@@ -24,6 +24,6 @@ def alphabet_audiobooks(books, letter='A'):
 
 def rank_comparison(books, rank=1):
     # Return the ratings of the book at the rank
-    book_rank = books[books['Rank'] == 1]
+    book_rank = books[books['Rank'] == rank]
 
     return book_rank

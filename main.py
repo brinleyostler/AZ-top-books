@@ -103,6 +103,7 @@ with tab6:
     
     st.write('''
              Here is the entire AZ-top-books dataset, sorted by the column you selected.\n
-             Play around with the dropdown menu to see how the data changes!
+             Play around with the dropdown menu to see how the data changes!\n
+             Don't forget to switch the toggle in the sidebar to change the sort order.
              ''')
     st.dataframe(books_sorted)

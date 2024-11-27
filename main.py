@@ -28,7 +28,7 @@ books, ebooks, audiobooks = load_books_data()
 st.title('Arizona\'s Top Books')
 
 # Set up tabs
-tab1, tab2, tab3, tab4 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies'])
+tab1, tab2, tab3, tab4 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies', 'Format'])
 
 with tab1:
     input_letter = st.text_input('Enter a letter:', 'A')

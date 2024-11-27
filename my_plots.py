@@ -5,11 +5,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 def alphabet_rating_df(books, letter='A'):
-    ebooks = books[books['Format'] == 'EBOOK'].copy()
-    audiobooks = books[books['Format'] == 'AUDIOBOOK'].copy()
-
     # Return the highest rated books that start with the letter
     books_letter = books[books['Title'].str.startswith(letter)]
+    
     ebooks_letter = books_letter[books_letter['Format'] == 'EBOOK']
     ebooks_letter = ebooks_letter.sort_values(by=['Format', 'Rating'], ascending=False)
 

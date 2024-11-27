@@ -48,6 +48,6 @@ with tab2:
     audiobook_rank = rank_comparison(audiobooks, input_rank)
     st.write(f'Book info at rank {input_rank}')
     st.write('Ebook:')
-    st.dataframe(ebook_rank)
+    st.table(ebook_rank)
     st.write('Audiobook:')
-    st.dataframe(audiobook_rank)
+    st.table(audiobook_rank)

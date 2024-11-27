@@ -28,7 +28,7 @@ books, ebooks, audiobooks = load_books_data()
 st.title('Arizona\'s Top Books')
 
 # Set up tabs
-tab1, tab2 = st.tabs(['Alphabet', 'Rank'])
+tab1, tab2, tab3 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies'])
 
 with tab1:
     input_letter = st.text_input('Enter a letter:', 'A')
@@ -51,3 +51,10 @@ with tab2:
     st.table(ebook_rank)
     st.write('Audiobook:')
     st.table(audiobook_rank)
+
+with tab3:
+    input_wait = st.slider('Enter a wait time:', 0, 27, 1)
+    books_wait = books[books['Wait Weeks'] == input_wait]
+
+    fig = px.histogram(books_wait, x='Copies', nbins=80, title='Number of Copies Available When Wait Time is ' + str(input_wait))
+    st.plotly_chart(fig)

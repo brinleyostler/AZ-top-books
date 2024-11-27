@@ -22,8 +22,10 @@ def load_books_data():
     df_a = df[df['Format'] == 'AUDIOBOOK']
 
     return df, df_e, df_a
-
 books, ebooks, audiobooks = load_books_data()
 
 st.title('Arizona\'s Top Books')
+
+# Set up tabs
+tab1 = st.tabs(['Alphabet'])
 

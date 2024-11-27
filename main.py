@@ -73,4 +73,7 @@ with tab5:
     books_rating = books[books['Rating'] == input_rating]
     fig5 = px.histogram(books_rating, x='Rank', nbins=12, title='Ranks of Books with a ' + str(input_rating) + ' Rating')
     st.plotly_chart(fig5)
+
+    st.write('Books with a rating of ' + str(input_rating))
+    st.table(books_rating)
     

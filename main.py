@@ -24,6 +24,11 @@ books, ebooks, audiobooks = load_books_data()
 
 # Set up the page
 st.title('Arizona\'s Top Books')
+st.sidebar.title('Arizona\'s Top Books')
+st.sidebar.write('Input the order we should sort the data:')
+with st.sidebar:
+    input_order = st.toggle('Ascending', True)
+
 
 # Set up tabs
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies', 'Format', 'Rank/Rating', 'About'])
@@ -31,11 +36,11 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Co
 with tab1:
     input_letter = st.text_input('Enter a letter:', 'A')
 
-    e_letter = alphabet_ebooks(books, input_letter)
+    e_letter = alphabet_ebooks(books, input_letter, input_order)
     st.write(f'Top 5 Ebooks that start with the letter {input_letter}')
     st.dataframe(e_letter)
 
-    a_letter = alphabet_audiobooks(books, input_letter)
+    a_letter = alphabet_audiobooks(books, input_letter, input_order)
     st.write(f'Top 5 Audiobooks that start with the letter {input_letter}')
     st.dataframe(a_letter)
 
@@ -67,7 +72,7 @@ with tab4:
 with tab5:
     input_rating = st.slider('Enter a rating:', 2.4, 4.7, 4.0, 0.1)
     
-    books_rating = rank_rating_comparison(books, input_rating)
+    books_rating = rank_rating_comparison(books, input_rating, input_order)
 
     fig5 = px.histogram(books_rating, x='Rank', nbins=12, title='Ranks of Books with a ' + str(input_rating) + ' Rating')
     st.plotly_chart(fig5)
@@ -76,6 +81,5 @@ with tab5:
     
 with tab6:
     input_sort = st.selectbox('Sort by:', ['Rank', 'Title', 'Author', 'Rating', 'Format', 'Copies', 'Availability', 'Wait Weeks'])
-    input_order = st.toggle('Ascending', True)
     books_sorted = about(books, input_sort, input_order)
     st.dataframe(books_sorted)

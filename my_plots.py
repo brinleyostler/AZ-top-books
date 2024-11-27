@@ -4,20 +4,20 @@ from plotly.subplots import make_subplots
 import matplotlib.pyplot as plt
 import pandas as pd
 
-def alphabet_ebooks(books, letter='A'):
+def alphabet_ebooks(books, letter='A', order=False):
     # Return the highest rated ebooks that start with the letter
     ebooks_letter = books[books['Title'].str.startswith(letter)]
     ebooks_letter = ebooks_letter[ebooks_letter['Format'] == 'EBOOK']
-    ebooks_letter = ebooks_letter.sort_values(by=['Format', 'Rating'], ascending=False)
+    ebooks_letter = ebooks_letter.sort_values(by=['Format', 'Rating'], ascending=order)
     df_e = ebooks_letter.head(5)
 
     return df_e
 
-def alphabet_audiobooks(books, letter='A'):
+def alphabet_audiobooks(books, letter='A', order=False):
     # Return the highest rated audiobooks that start with the letter
     audiobooks_letter = books[books['Title'].str.startswith(letter)]
     audiobooks_letter = audiobooks_letter[audiobooks_letter['Format'] == 'AUDIOBOOK']
-    audiobooks_letter = audiobooks_letter.sort_values(by=['Format', 'Rating'], ascending=False)
+    audiobooks_letter = audiobooks_letter.sort_values(by=['Format', 'Rating'], ascending=order)
     df_a = audiobooks_letter.head(5)
 
     return df_a
@@ -35,9 +35,10 @@ def format_comparison(books, format='EBOOK'):
 
     return book_format
 
-def rank_rating_comparison(books, rating=4.0):
+def rank_rating_comparison(books, rating=4.0, order=False):
     # Return the ratings of the book at the rank
     book_rank_rating = books[books['Rating'] == rating]
+    book_rank_rating = book_rank_rating.sort_values(by=['Rank'], ascending=order)
 
     return book_rank_rating
 

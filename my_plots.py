@@ -27,3 +27,22 @@ def rank_comparison(books, rank=1):
     book_rank = books[books['Rank'] == rank]
 
     return book_rank
+
+def format_comparison(books, format='EBOOK'):
+    # Return the ratings of the book of a specific format
+    book_format = books[books['Format'] == format]
+    book_format = book_format.sort_values(by=['Rating'], ascending=False)
+
+    return book_format
+
+def rank_rating_comparison(books, rating=4.0):
+    # Return the ratings of the book at the rank
+    book_rank_rating = books[books['Rating'] == rating]
+
+    return book_rank_rating
+
+def about(books, sortby='Rank'):
+    # Return the books sorted by a specific column
+    books = books.sort_values(by=[sortby], ascending=True)
+
+    return books

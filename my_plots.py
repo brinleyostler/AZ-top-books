@@ -33,7 +33,11 @@ def format_comparison(books, format='EBOOK'):
     book_format = books[books['Format'] == format]
     book_format = book_format.sort_values(by=['Rating'], ascending=False)
 
-    return book_format
+    # Return the copies of the book of a specific format
+    book_copies = books[books['Format'] == format]
+    book_copies = book_copies.sort_values(by=['Copies'], ascending=False)
+
+    return book_format, book_copies
 
 def rank_rating_comparison(books, rating=4.0, order=False):
     # Return the ratings of the book at the rank

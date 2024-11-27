@@ -81,8 +81,11 @@ with tab4:
     format_choice = st.radio('Choose a format:', ['EBOOK', 'AUDIOBOOK'])
     format_books = format_comparison(books, format_choice)
 
-    fig4 = px.histogram(format_books, x='Rating', title='Ratings of ' + format_choice + 's')
+    fig4 = px.histogram(format_books[0], x='Rating', title='Ratings of ' + format_choice + 's')
     st.plotly_chart(fig4)
+
+    fig4b = px.histogram(format_books[1], x='Copies', title='Copies of ' + format_choice + 's')
+    st.plotly_chart(fig4b)
 
 with tab5:
     input_rating = st.slider('Enter a rating:', 2.4, 4.7, 4.0, 0.1)

@@ -30,7 +30,7 @@ with st.sidebar:
     input_letter = st.text_input('Enter a letter:', 'A')
 
 # Set up tabs
-tab1 = st.tabs(['Alphabet'])
+tab1, tab2 = st.tabs(['Alphabet', 'Format'])
 
 with tab1:
     e_letter = alphabet_ebooks(books, input_letter)

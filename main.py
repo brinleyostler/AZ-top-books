@@ -33,10 +33,11 @@ tab1 = st.tabs(['Alphabet'])
 input_letter = st.text_input('Enter a letter:', 'A')
 
 with tab1:
-    e_letter, a_letter = alphabet_rating_df(books, input_letter)
+    e_letter = alphabet_ebooks(books, input_letter)
     st.write(f'Top 5 Ebooks that start with the letter {input_letter}')
     st.dataframe(e_letter)
 
+    a_letter = alphabet_audiobooks(books, input_letter)
     st.write(f'Top 5 Audiobooks that start with the letter {input_letter}')
     st.dataframe(a_letter)
 

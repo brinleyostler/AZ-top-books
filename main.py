@@ -62,6 +62,21 @@ with tab3:
     fig3 = px.histogram(books_wait, x='Copies', nbins=80, title='Number of Copies Available When Wait Time is ' + str(input_wait) + ' weeks')
     st.plotly_chart(fig3)
 
+    with st.expander("Here's how the chart works"):
+        st.write('''
+            Pan over any of the bars above.
+            Copies: the number of copies available when the wait time is ___ weeks
+            count: the number of books with a wait time of ___ weeks that have ___ copies available
+                
+            Make sense? Here's an example:
+                Wait Time: 0 weeks
+                Copies=1
+                count=4
+            This means that there are 4 books with a wait time of 0 weeks that have 1 copy available.
+                
+            Easy as pie!
+        ''')
+
 with tab4:
     format_choice = st.radio('Choose a format:', ['EBOOK', 'AUDIOBOOK'])
     format_books = format_comparison(books, format_choice)

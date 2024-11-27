@@ -28,7 +28,7 @@ books, ebooks, audiobooks = load_books_data()
 st.title('Arizona\'s Top Books')
 
 # Set up tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies', 'Format', 'Rank/Rating'])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies', 'Format', 'Rank/Rating', 'About'])
 
 with tab1:
     input_letter = st.text_input('Enter a letter:', 'A')
@@ -60,9 +60,8 @@ with tab3:
     st.plotly_chart(fig3)
 
 with tab4:
-    format_choice = st.selectbox('Choose a format:', ['EBOOK', 'AUDIOBOOK'])
-    format_books = books[books['Format'] == format_choice]
-    format_books = format_books.sort_values(by='Wait Weeks', ascending=False)
+    format_choice = st.radio('Choose a format:', ['EBOOK', 'AUDIOBOOK'])
+    format_books = format_comparison(books, format_choice)
 
     fig4 = px.histogram(format_books, x='Rating', title='Ratings of ' + format_choice + 's')
     st.plotly_chart(fig4)
@@ -70,10 +69,14 @@ with tab4:
 with tab5:
     input_rating = st.slider('Enter a rating:', 2.4, 4.7, 4.0, 0.1)
     
-    books_rating = books[books['Rating'] == input_rating]
+    books_rating = rank_rating_comparison(books, input_rating)
+
     fig5 = px.histogram(books_rating, x='Rank', nbins=12, title='Ranks of Books with a ' + str(input_rating) + ' Rating')
     st.plotly_chart(fig5)
-
     st.write('Books with a rating of ' + str(input_rating))
     st.table(books_rating)
     
+with tab6:
+    input_sort = st.selectbox('Sort by:', ['Title', 'Author', 'Rating', 'Rank', 'Format', 'Copies', 'Wait Weeks'])
+    books_sorted = about(books, input_sort)
+    st.table(books_sorted)

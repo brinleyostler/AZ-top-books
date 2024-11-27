@@ -42,7 +42,7 @@ with tab1:
     st.dataframe(a_letter)
 
 with tab2:
-    input_rank = st.slider('Enter a rank:', 1, 240, 1)
+    input_rank = st.slider('Enter a rank:', 1, 240, 1, 1)
 
     ebook_rank = rank_comparison(ebooks, input_rank)
     audiobook_rank = rank_comparison(audiobooks, input_rank)
@@ -53,7 +53,7 @@ with tab2:
     st.table(audiobook_rank)
 
 with tab3:
-    input_wait = st.slider('Enter a wait time:', 0, 27, 0)
+    input_wait = st.slider('Enter a wait time:', 0, 27, 0, 1)
     books_wait = books[books['Wait Weeks'] == input_wait]
 
     fig3 = px.histogram(books_wait, x='Copies', nbins=80, title='Number of Copies Available When Wait Time is ' + str(input_wait) + ' weeks')
@@ -68,7 +68,7 @@ with tab4:
     st.plotly_chart(fig4)
 
 with tab5:
-    input_rating = st.slider('Enter a rating:', 2.4, 4.7, 4.0)
+    input_rating = st.slider('Enter a rating:', 2.4, 4.7, 4.0, 0.1)
     
     books_rating = books[books['Rating'] == input_rating]
     fig5 = px.histogram(books_rating, x='Rank', nbins=12, title='Ranks of Books with a ' + str(input_rating) + ' Rating')

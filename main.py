@@ -26,13 +26,15 @@ books, ebooks, audiobooks = load_books_data()
 
 # Set up the page
 st.title('Arizona\'s Top Books')
-with st.sidebar:
-    input_letter = st.text_input('Enter a letter:', 'A')
+#with st.sidebar:
+#    input_letter = st.text_input('Enter a letter:', 'A')
 
 # Set up tabs
 tab1, tab2 = st.tabs(['Alphabet', 'Format'])
 
 with tab1:
+    input_letter = st.text_input('Enter a letter:', 'A')
+
     e_letter = alphabet_ebooks(books, input_letter)
     st.write(f'Top 5 Ebooks that start with the letter {input_letter}')
     st.dataframe(e_letter)

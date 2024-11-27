@@ -64,14 +64,14 @@ with tab3:
 
     with st.expander("Here's how the chart works"):
         st.write('''
-            Pan over any of the bars above.
-            Copies: the number of copies available when the wait time is ___ weeks
-            count: the number of books with a wait time of ___ weeks that have ___ copies available
+            Pan over any of the bars above.\n
+            Copies: the number of copies available when the wait time is ___ weeks\n
+            count: the number of books with a wait time of ___ weeks that have ___ copies available\n
                 
-            Make sense? Here's an example:
-                Wait Time: 0 weeks
-                Copies=1
-                count=4
+            Make sense? Here's an example:\n
+                Wait Time: 0 weeks\n
+                Copies=1\n
+                count=4\n
             This means that there are 4 books with a wait time of 0 weeks that have 1 copy available.
                 
             Easy as pie!

@@ -77,4 +77,4 @@ with tab5:
 with tab6:
     input_sort = st.selectbox('Sort by:', ['Rank', 'Title', 'Author', 'Rating', 'Format', 'Copies', 'Availability', 'Wait Weeks'])
     books_sorted = about(books, input_sort)
-    st.table(books_sorted)
+    st.dataframe(books_sorted)

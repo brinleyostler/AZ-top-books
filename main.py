@@ -31,7 +31,7 @@ with st.sidebar:
 
 
 # Set up tabs
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies', 'Format', 'Rank/Rating', 'About'])
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(['Alphabet', 'Rank', 'Wait Times/Copies', 'Format', 'Rank/Rating', 'Top Authors', 'About'])
 
 with tab1:
     input_letter = st.text_input('Enter a letter:', 'A')
@@ -96,8 +96,20 @@ with tab5:
     st.plotly_chart(fig5)
     st.write('All books with a rating of ' + str(input_rating))
     st.table(books_rating)
-    
+
 with tab6:
+    num_authors = st.number_input("Insert a number", value=5)
+    top_auth = top_authors(books, num_authors)
+
+    st.write(f'Top {num_authors} authors')
+
+    fig6 = px.bar(top_auth, x=top_auth.index, y=top_auth.values, title='Top Authors')
+    fig6.update_layout(xaxis_tickangle=-45)
+    st.plotly_chart(fig6)
+
+    st.table(top_auth)
+    
+with tab7:
     input_sort = st.selectbox('Sort by:', ['Rank', 'Title', 'Author', 'Rating', 'Format', 'Copies', 'Availability', 'Wait Weeks'])
     books_sorted = about(books, input_sort, input_order)
     

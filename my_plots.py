@@ -46,6 +46,13 @@ def rank_rating_comparison(books, rating=4.0, order=False):
 
     return book_rank_rating
 
+def top_authors(books, num_authors=5):
+    # Return the top authors
+    top_authors = books['Author'].value_counts().head(num_authors)
+
+    return top_authors
+
+
 def about(books, sortby='Rank', order=True):
     # Return the books sorted by a specific column
     books = books.sort_values(by=[sortby], ascending=order)

@@ -103,7 +103,7 @@ with tab6:
 
     st.write(f'Top {num_authors} authors')
 
-    fig6 = px.bar(top_auth, x=top_auth.index, y=top_auth.values, title='Top Authors', labels={'x':'Author', 'y':'Number of Books'})
+    fig6 = px.bar(top_authors, x='Author', y='Books', title='Top Authors')
     fig6.update_layout(xaxis_tickangle=-45)
     st.plotly_chart(fig6)
 

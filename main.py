@@ -99,11 +99,11 @@ with tab5:
 
 with tab6:
     num_authors = st.number_input("Insert a number", value=5)
-    top_auth = top_authors(books, num_authors)
+    top_auth = top_authors(books, num_authors, input_order)
 
     st.write(f'Top {num_authors} authors')
 
-    fig6 = px.bar(top_auth, x=top_auth.index, y=top_auth.values, title='Top Authors')
+    fig6 = px.bar(top_auth, x=top_auth.index, y=top_auth.values, title='Top Authors', labels={'x':'Author', 'y':'Number of Books'})
     fig6.update_layout(xaxis_tickangle=-45)
     st.plotly_chart(fig6)
 
